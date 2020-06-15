@@ -21,6 +21,7 @@ export function Chat() {
     const sendMessage = React.useCallback(() => {
         if (connection) {
             connection.invoke("SendMessage", "me", message);
+            setMessage("");
         }
     }, [message]);
 
@@ -41,6 +42,7 @@ export function Chat() {
             <input
                 type="text"
                 onChange={(e) => setMessage(e.target.value)}
+                value={message}
             />
             <button type="button" onClick={sendMessage}>Send</button>
         </>
